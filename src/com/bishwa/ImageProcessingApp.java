@@ -16,10 +16,6 @@ public class ImageProcessingApp {
 	private JTextArea outputTextArea;
 	private List<File> selectedImages;
 
-	public ImageProcessingApp() {
-		selectedImages = new ArrayList<>();
-
-	}
 
 	public static void main(String[] args) {
 
