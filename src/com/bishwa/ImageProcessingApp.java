@@ -77,7 +77,19 @@ public class ImageProcessingApp {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	private void addImage(File file) {} //working on it
+	private void addImage(File file) {
+		// Add the image to the list of selected images
+		selectedImages.add(file);
+		int imageCount = selectedImages.size();
+
+		outputTextArea.append("Image added: " + file.getName() + "\n");
+		outputTextArea.append("Total images: " + imageCount + "\n");
+
+		// Enable the process button if there is at least one image
+		if (imageCount > 0) {
+			processButton.setVisible(true);
+		}
+	}
 	private void processImages() {} // working on it
 	public static void main(String[] args) {
 
