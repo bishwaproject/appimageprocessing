@@ -14,6 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
+
 
 
 
@@ -176,6 +179,10 @@ public class ImageProcessingApp {
 	}
 
 	public static void main(String[] args) {
-
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new ImageProcessingApp();
+			}
+		});
 	}
 }
