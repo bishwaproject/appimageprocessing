@@ -3,14 +3,19 @@ package com.bishwa;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
+
 
 public class ImageProcessingApp {
 	// Client Class: 
@@ -90,7 +95,86 @@ public class ImageProcessingApp {
 			processButton.setVisible(true);
 		}
 	}
-	private void processImages() {} // working on it
+	private void processImages() {
+		// Process all selected images
+		for (File imageFile : selectedImages) {
+			BufferedImage image = loadImage(imageFile);
+
+			if (image != null) {
+				applyFiltersConcurrently(image);
+
+				String outputFilePath = getOutputFilePath(imageFile);
+				saveImage(image, outputFilePath);
+
+				outputTextArea.append("Image processed and saved: " + outputFilePath + "\n");
+			} else {
+				outputTextArea.append("Failed to load image: " + imageFile.getAbsolutePath() + "\n");
+			}
+		}
+
+		// Clear the list of selected images
+		selectedImages.clear();
+
+		// Disable the process button
+		processButton.setVisible(false);
+	}
+
+	private BufferedImage loadImage(File file) {
+		try {
+			return ImageIO.read(file);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	private void saveImage(BufferedImage image, String filePath) {
+		try {
+			ImageIO.write(image, "JPEG", new File(filePath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void applyFiltersConcurrently(BufferedImage image) {
+		int numThreads = Runtime.getRuntime().availableProcessors(); // Number of available processor cores
+
+		Thread[] threads = new Thread[numThreads];
+		int imageHeight = image.getHeight();
+
+		// Divide the image into equal parts for concurrent processing
+		int partHeight = imageHeight / numThreads;
+		int remainingHeight = imageHeight % numThreads;
+
+		for (int i = 0; i < numThreads; i++) {
+			int startY = i * partHeight;
+			int endY = startY + partHeight;
+
+			if (i == numThreads - 1) {
+				endY += remainingHeight;
+			}
+
+			ImageProcessor processor = new ImageProcessor(image, startY, endY);
+			threads[i] = new Thread(processor);
+			threads[i].start();
+		}
+
+		// Wait for all threads to finish
+		try {
+			for (Thread thread : threads) {
+				thread.join();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private String getOutputFilePath(File inputFile) {
+		String inputFilePath = inputFile.getAbsolutePath();
+		String outputFilePath = inputFilePath.substring(0, inputFilePath.lastIndexOf(".")) + "_processed.jpg";
+		return outputFilePath;
+	}
+
 	public static void main(String[] args) {
 
 	}
