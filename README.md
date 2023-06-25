@@ -11,3 +11,11 @@ Concepts:
 6. Thread Safety in Shared Data
 
 By applying these concept, we can provider faster results and a smoother user experience.
+
+#### structure of classes
+
+1. Main Class: This class serves as the entry point of the application. It can handle initialization, user input, and manage the overall flow of the program.
+2. ImageProcessingApp Class: This class represents the image processing application itself. It contains methods for loading images, applying filters, displaying the GUI, and handling user interactions. It can also manage the multi threading aspects of image processing.
+3. ImageProcessor class: this class encapsulates the logic for processing individual images. It can have methods for applying different filters or transformations to an image. The ImageProcessor class can be used by the ImageProcessingApp class to process images concurrently using multiple threads.
+
+
