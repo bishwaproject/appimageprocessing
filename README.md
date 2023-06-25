@@ -11,6 +11,7 @@ Concepts:
 6. Thread Safety in Shared Data
 
 By applying these concept, we can provider faster results and a smoother user experience.
+It’s generally a good practice to organize your code into separate classes based on their responsibilities and functionality. This helps in code maintenance, reusability, and readability. 
 
 #### structure of classes
 
