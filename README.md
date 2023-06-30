@@ -19,4 +19,5 @@ It’s generally a good practice to organize your code into separate classes bas
 2. ImageProcessingApp Class: This class represents the image processing application itself. It contains methods for loading images, applying filters, displaying the GUI, and handling user interactions. It can also manage the multi threading aspects of image processing.
 3. ImageProcessor class: this class encapsulates the logic for processing individual images. ImageProcessor class implements runnable interface.  It can have methods for applying different filters or transformations to an image. The ImageProcessor class can be used by the ImageProcessingApp class to process images concurrently using multiple threads.
 
+In this. Project, the GUI is created using Swing components.
 
