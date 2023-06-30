@@ -23,3 +23,9 @@ It’s generally a good practice to organize your code into separate classes bas
 In this. Project, the GUI is created using Swing components.
 When the user clicks the "Upload Image" button, a file chooser dialog is displayed. Once the user selects an image file, it is passed to the processImage method, where the image processing logic is applied, and the processed image is saved.The output is displayed in the outputTextArea component.
 
+##### benefits of multi-threading in this app
+If there were no threading system in Java, the image processing would be done sequentially in a single thread. Each image would be processed one after another, potentially leading to longer processing times, especially when dealing with multiple images or computationally intensive operations.
+
+By utilizing multiple threads, the processing workload can be divided among the available processor cores, allowing for parallel execution of the image processing tasks. This can significantly improve the overall processing speed and efficiency, especially on systems with multiple processor cores or CPUs.
+
+
