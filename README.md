@@ -20,5 +20,5 @@ It’s generally a good practice to organize your code into separate classes bas
 3. ImageProcessor class: this class encapsulates the logic for processing individual images. ImageProcessor class implements runnable interface.  It can have methods for applying different filters or transformations to an image. The ImageProcessor class can be used by the ImageProcessingApp class to process images concurrently using multiple threads.
 
 In this. Project, the GUI is created using Swing components.
-When the user clicks the "Upload Image" button, a file chooser dialog is displayed. Once the user selects an image file, it is passed to the processImage method, where the image processing logic is applied, and the processed image is saved.
+When the user clicks the "Upload Image" button, a file chooser dialog is displayed. Once the user selects an image file, it is passed to the processImage method, where the image processing logic is applied, and the processed image is saved.The output is displayed in the outputTextArea component.
 
