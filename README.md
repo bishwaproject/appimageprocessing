@@ -30,5 +30,9 @@ By utilizing multiple threads, the processing workload can be divided among the 
 In summary, multi-threading in Java allows for concurrent execution of tasks, enabling better utilization of system resources and improved performance for computationally intensive or time-consuming operations.
 
 In Java we can perform threading operations by either implementing the Runnable interface or extending the Thread class. Both approaches allow you to create and work with threads.
+#### Multi-threading in Spring Boot
+Spring Boot integrates with the Java ExecutorService and ThreadPoolExecutor classes, which are part of the java.util.concurrent package. These classes provide a high-level API for managing and executing tasks in a multithreaded environment.
 
+Spring Boot offers convenient annotations and abstractions to configure and manage multithreading in a Spring application. For example, you can use the @Async annotation to mark methods that should be executed asynchronously. Spring Boot will automatically create and manage the thread pool for executing these asynchronous methods.
 
+Additionally, Spring Boot provides features like TaskExecutor and ThreadPoolTaskExecutor that allow fine-grained control over the thread pool configuration, such as setting the core pool size, maximum pool size, and queue capacity.
