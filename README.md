@@ -29,4 +29,6 @@ If there were no threading system in Java, the image processing would be done se
 By utilizing multiple threads, the processing workload can be divided among the available processor cores, allowing for parallel execution of the image processing tasks. This can significantly improve the overall processing speed and efficiency, especially on systems with multiple processor cores or CPUs.
 In summary, multi-threading in Java allows for concurrent execution of tasks, enabling better utilization of system resources and improved performance for computationally intensive or time-consuming operations.
 
+In Java we can perform threading operations by either implementing the Runnable interface or extending the Thread class. Both approaches allow you to create and work with threads.
+
 
